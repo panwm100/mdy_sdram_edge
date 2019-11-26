@@ -1,28 +1,24 @@
+/*********www.mdy-edu.com 明德扬科教 注释开始****************
+明德扬专注FPGA培训和研究，并承接FPGA项目，本项目代码解释可在明德扬官方论坛学习（http://www.fpgabbs.cn/），明德扬掌握有PCIE，MIPI，视频拼接等技术，添加Q群97925396互相讨论学习
+**********www.mdy-edu.com 明德扬科教 注释结束****************/
+
 module add_5(
     clk    ,
     rst_n  ,
     din_vld,
-   // dout_vld,
-    //其他信号,举例dout
     dout
     );
 
-    //参数定义
     parameter      DATA_W =         8;
 
-    //输入信号定义
     input               clk    ;
     input               rst_n  ;
     input               din_vld;
 
-    //输出信号定义
-  //  output              dout_vld;
     output[DATA_W-1:0]  dout   ;
 
-    //输出信号reg定义
     reg   [DATA_W-1:0]  dout   ;
 
- //   reg                 dout_vld;
 
     reg   [DATA_W-1:0]  cnt   ;
     wire                add_cnt,end_cnt;

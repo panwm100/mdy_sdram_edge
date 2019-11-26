@@ -1,3 +1,7 @@
+/*********www.mdy-edu.com 明德扬科教 注释开始****************
+明德扬专注FPGA培训和研究，并承接FPGA项目，本项目代码解释可在明德扬官方论坛学习（http://www.fpgabbs.cn/），明德扬掌握有PCIE，MIPI，视频拼接等技术，添加Q群97925396互相讨论学习
+**********www.mdy-edu.com 明德扬科教 注释结束****************/
+
 module opcode_dect(
     clk         ,
     rst_n       ,
@@ -39,7 +43,7 @@ module opcode_dect(
 
     reg      [11:0]         din_tmp;
     wire     [15:0]         din_top;
-    reg                       flag ;
+    reg                       flag_add ;
 
     always @(posedge clk or negedge rst_n)begin
         if(!rst_n)begin
@@ -53,7 +57,7 @@ module opcode_dect(
         end
     end
 
-    assign add_cnt0 = flag&&din_vld;
+    assign add_cnt0 = flag_add&&din_vld;
     assign end_cnt0 = add_cnt0 && cnt0== 2-1;
 
     always @(posedge clk or negedge rst_n)begin 
@@ -74,13 +78,13 @@ module opcode_dect(
     assign din_top = {din_tmp[11:0],din}==16'h55d5;    
     always  @(posedge clk or negedge rst_n)begin
         if(rst_n==1'b0)begin
-            flag <= 0;
+            flag_add <= 0;
         end
-        else if(din_vld&&flag==0&&din_top)begin
-            flag <= 1;
+        else if(din_vld&&flag_add==0&&din_top)begin
+            flag_add <= 1;
         end
         else if(end_cnt1)begin
-            flag <= 0;
+            flag_add <= 0;
         end
     end
 
@@ -88,7 +92,7 @@ module opcode_dect(
         if(rst_n==1'b0)begin
             din_tmp <= 0;
         end
-        else if(din_vld&&flag==0)begin
+        else if(din_vld&&flag_add==0)begin
             din_tmp <= {din_tmp[7:0],din};
         end
     end

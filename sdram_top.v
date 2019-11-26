@@ -1,3 +1,7 @@
+/*********www.mdy-edu.com 明德扬科教 注释开始****************
+明德扬专注FPGA培训和研究，并承接FPGA项目，本项目代码解释可在明德扬官方论坛学习（http://www.fpgabbs.cn/），明德扬掌握有PCIE，MIPI，视频拼接等技术，添加Q群97925396互相讨论学习
+**********www.mdy-edu.com 明德扬科教 注释结束****************/
+
 module sdram_top(
         clk         ,
         clk_100M    ,
